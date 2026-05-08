@@ -1,189 +1,578 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
 <title>Goodfellas Barbearia</title>
 
 <style>
-body {
-  margin: 0;
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
   font-family: Arial, sans-serif;
-  background: #111;
-  color: #fff;
+  background:#111;
+  color:#fff;
+  overflow-x:hidden;
 }
 
-/* 🔥 HERO COM IMAGEM */
-.hero {
-  height: 90vh;
-  background: url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?q=80&w=1200&auto=format&fit=crop') no-repeat center/cover;
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
+/* HERO */
+
+.hero{
+  width:100%;
+  min-height:100vh;
+
+  background:
+  linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)),
+  url('https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?q=80&w=1400&auto=format&fit=crop');
+
+  background-size:cover;
+  background-position:center;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
 }
 
-/* Overlay escuro */
-.hero::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.7);
+.hero-content{
+  max-width:800px;
 }
 
-.hero-content {
-  position: relative;
-  z-index: 1;
-  padding: 20px;
+.hero h1{
+  font-size:60px;
+  color:#f1c40f;
+  margin-bottom:15px;
 }
 
-.hero h1 {
-  font-size: 40px;
-  color: #f1c40f;
-  margin-bottom: 10px;
+.hero p{
+  font-size:22px;
+  line-height:1.5;
+  color:#ddd;
 }
 
-.hero p {
-  font-size: 18px;
+.hero-btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:16px 32px;
+  background:#f1c40f;
+  color:#000;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
+  transition:0.3s;
 }
 
-/* BOTÃO */
-.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 15px 25px;
-  background: #f1c40f;
-  color: #000;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 5px;
+.hero-btn:hover{
+  transform:scale(1.05);
 }
 
 /* SEÇÕES */
-.section {
-  padding: 40px 15px;
-  text-align: center;
+
+.section{
+  padding:70px 20px;
 }
 
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
+.section-title{
+  text-align:center;
+  font-size:40px;
+  margin-bottom:50px;
+  color:#f1c40f;
 }
 
-.card {
-  background: #222;
-  padding: 20px;
-  border-radius: 10px;
-  width: 100%;
-  max-width: 300px;
+/* BARBEIROS */
+
+.barbers{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:25px;
 }
 
-.card h3 {
-  color: #f1c40f;
+.barber-card{
+  background:#1b1b1b;
+  border-radius:15px;
+  overflow:hidden;
+  width:320px;
+  transition:0.3s;
+  box-shadow:0 0 20px rgba(0,0,0,0.4);
 }
 
-.price {
-  font-size: 20px;
-  margin: 10px 0;
+.barber-card:hover{
+  transform:translateY(-8px);
+}
+
+.barber-card img{
+  width:100%;
+  height:320px;
+  object-fit:cover;
+}
+
+.barber-info{
+  padding:25px;
+  text-align:center;
+}
+
+.barber-info h3{
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+.barber-info p{
+  color:#bbb;
+  margin-bottom:20px;
+}
+
+.open-services{
+  width:100%;
+  padding:14px;
+  border:none;
+  background:#f1c40f;
+  color:#000;
+  font-weight:bold;
+  font-size:16px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+/* SERVIÇOS */
+
+.services{
+  margin-top:20px;
+  display:none;
+}
+
+.service-item{
+  background:#222;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:15px;
+}
+
+.service-item h4{
+  margin-bottom:10px;
+  color:#f1c40f;
+}
+
+.price{
+  margin-bottom:15px;
+  color:#ddd;
+}
+
+.whatsapp-btn{
+  display:block;
+  text-decoration:none;
+  background:#25D366;
+  color:#fff;
+  padding:12px;
+  border-radius:8px;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.whatsapp-btn:hover{
+  opacity:0.9;
+}
+
+/* GALERIA */
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+  gap:20px;
+}
+
+.gallery img{
+  width:100%;
+  height:auto;
+  max-height:500px;
+  object-fit:contain;
+  border-radius:15px;
+  transition:0.3s;
+  background:#1b1b1b;
+}
+
+.gallery img:hover{
+  transform:scale(1.03);
+}
+
+/* LOCALIZAÇÃO */
+
+.location-box{
+  max-width:1000px;
+  margin:auto;
+  background:#1b1b1b;
+  border-radius:15px;
+  overflow:hidden;
+}
+
+.location-text{
+  padding:30px;
+  text-align:center;
+}
+
+.location-text h3{
+  color:#f1c40f;
+  margin-bottom:15px;
+  font-size:30px;
+}
+
+.location-text p{
+  color:#ccc;
+  font-size:18px;
+}
+
+iframe{
+  width:100%;
+  height:400px;
+  border:none;
 }
 
 /* FOOTER */
-footer {
-  background: #000;
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
+
+footer{
+  background:#000;
+  padding:30px 20px;
+  text-align:center;
+  margin-top:50px;
+}
+
+footer p{
+  color:#aaa;
 }
 
 /* RESPONSIVO */
-@media (min-width: 768px) {
-  .hero h1 {
-    font-size: 50px;
+
+@media(max-width:768px){
+
+  .hero h1{
+    font-size:42px;
   }
 
-  .card {
-    width: 250px;
+  .hero p{
+    font-size:18px;
   }
+
+  .section-title{
+    font-size:32px;
+  }
+
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- 🔥 HERO -->
+<!-- HERO -->
+
 <section class="hero">
+
   <div class="hero-content">
+
     <h1>Goodfellas Barbearia</h1>
-    <p>Cortes de respeito. Estilo de verdade.</p>
 
-    <a class="btn" href="https://wa.me/5561992376099" target="_blank">
-      Agendar Agora
+    <p>
+      Cortes de respeito, barbeiros profissionais e atendimento premium.
+      Escolha seu barbeiro e agende agora mesmo pelo WhatsApp.
+    </p>
+
+    <a href="#barbeiros" class="hero-btn">
+      Escolher Barbeiro
     </a>
-  </div>
-</section>
-
-<!-- SERVIÇOS -->
-<section class="section">
-  <h2>Serviços</h2>
-
-  <div class="cards">
-
-    <div class="card">
-      <h3>Corte</h3>
-      <p class="price">R$30</p>
-      <a class="btn" href="https://wa.me/5561992376099?text=Olá,%20quero%20agendar%20um%20CORTE%20de%20R$30" target="_blank">Agendar</a>
-    </div>
-
-    <div class="card">
-      <h3>Barba</h3>
-      <p class="price">R$20</p>
-      <a class="btn" href="https://wa.me/5561992376099?text=Olá,%20quero%20agendar%20uma%20BARBA%20de%20R$20" target="_blank">Agendar</a>
-    </div>
-
-    <div class="card">
-      <h3>Corte + Barba</h3>
-      <p class="price">R$45</p>
-      <a class="btn" href="https://wa.me/5561992376099?text=Olá,%20quero%20agendar%20CORTE%20+%20BARBA%20de%20R$45" target="_blank">Agendar</a>
-    </div>
-
-    <div class="card">
-      <h3>Sobrancelha</h3>
-      <p class="price">R$10</p>
-      <a class="btn" href="https://wa.me/5561992376099?text=Olá,%20quero%20fazer%20SOBRANCELHA%20de%20R$10" target="_blank">Agendar</a>
-    </div>
-
-    <div class="card">
-      <h3>Hidratação</h3>
-      <p class="price">R$25</p>
-      <a class="btn" href="https://wa.me/5561992376099?text=Olá,%20quero%20fazer%20HIDRATAÇÃO%20de%20R$25" target="_blank">Agendar</a>
-    </div>
 
   </div>
+
 </section>
 
-<!-- DIFERENCIAIS -->
-<section class="section">
-  <h2>Por que escolher a Goodfellas?</h2>
-  <p>✔ Profissionais experientes</p>
-  <p>✔ Atendimento rápido</p>
-  <p>✔ Ambiente confortável</p>
+<!-- BARBEIROS -->
+
+<section class="section" id="barbeiros">
+
+  <h2 class="section-title">Nossos Barbeiros</h2>
+
+  <div class="barbers">
+
+    <!-- BARBEIRO 1 -->
+
+    <div class="barber-card">
+
+      <img src="https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="barber-info">
+
+        <h3>Ygor</h3>
+
+        <button class="open-services">
+          Ver Serviços
+        </button>
+
+        <div class="services">
+
+          <div class="service-item">
+            <h4>Corte</h4>
+            <p class="price">R$30</p>
+
+            <a class="whatsapp-btn"
+            href="https://wa.me/5561981832825?text=Olá,%20quero%20agendar%20um%20CORTE%20com%20Ygor"
+            target="_blank">
+
+            Agendar no WhatsApp
+
+            </a>
+          </div>
+
+          <div class="service-item">
+            <h4>Barba</h4>
+            <p class="price">R$20</p>
+
+            <a class="whatsapp-btn"
+            href="https://wa.me/5561981832825?text=Olá,%20quero%20agendar%20uma%20BARBA%20com%20Ygor"
+            target="_blank">
+
+            Agendar no WhatsApp
+
+            </a>
+          </div>
+
+          <div class="service-item">
+            <h4>Corte + Barba</h4>
+            <p class="price">R$45</p>
+
+            <a class="whatsapp-btn"
+            href="https://wa.me/5561981832825?text=Olá,%20quero%20agendar%20CORTE%20%2B%20BARBA%20com%20Ygor"
+            target="_blank">
+
+            Agendar no WhatsApp
+
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BARBEIRO 2 -->
+
+    <div class="barber-card">
+
+      <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?q=80&w=1200&auto=format&fit=crop">
+
+      <div class="barber-info">
+
+        <h3>Richard</h3>
+
+        <button class="open-services">
+          Ver Serviços
+        </button>
+
+        <div class="services">
+
+          <div class="service-item">
+            <h4>Corte</h4>
+            <p class="price">R$35</p>
+
+            <a class="whatsapp-btn"
+            href="https://wa.me/5561996103053?text=Olá,%20quero%20agendar%20um%20CORTE%20com%20Richard"
+            target="_blank">
+
+            Agendar no WhatsApp
+
+            </a>
+          </div>
+
+          <div class="service-item">
+            <h4>Barba</h4>
+            <p class="price">R$25</p>
+
+            <a class="whatsapp-btn"
+            href="https://wa.me/5561996103053?text=Olá,%20quero%20agendar%20uma%20BARBA%20com%20Richard"
+            target="_blank">
+
+            Agendar no WhatsApp
+
+            </a>
+          </div>
+
+          <div class="service-item">
+            <h4>Corte + Barba</h4>
+            <p class="price">R$50</p>
+
+            <a class="whatsapp-btn"
+            href="https://wa.me/5561996103053?text=Olá,%20quero%20agendar%20CORTE%20%2B%20BARBA%20com%20Richard"
+            target="_blank">
+
+            Agendar no WhatsApp
+
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- BARBEIRO 3 -->
+
+    <div class="barber-card">
+
+      <img src="https://webtrends.net.br/wp-content/uploads/2020/10/Como-atrair-clientes-para-barbearia.png">
+
+      <div class="barber-info">
+
+        <h3>Doom</h3>
+
+        <button class="open-services">
+          Ver Serviços
+        </button>
+
+        <div class="services">
+
+          <div class="service-item">
+            <h4>Corte</h4>
+            <p class="price">R$28</p>
+
+            <a class="whatsapp-btn"
+            href="https://wa.me/5561992376099?text=Olá,%20quero%20agendar%20um%20CORTE%20com%20Doom"
+            target="_blank">
+
+            Agendar no WhatsApp
+
+            </a>
+          </div>
+
+          <div class="service-item">
+            <h4>Barba</h4>
+            <p class="price">R$18</p>
+
+            <a class="whatsapp-btn"
+            href="https://wa.me/5561992376099?text=Olá,%20quero%20agendar%20uma%20BARBA%20com%20Doom"
+            target="_blank">
+
+            Agendar no WhatsApp
+
+            </a>
+          </div>
+
+          <div class="service-item">
+            <h4>Corte + Barba</h4>
+            <p class="price">R$40</p>
+
+            <a class="whatsapp-btn"
+            href="https://wa.me/5561992376099?text=Olá,%20quero%20agendar%20CORTE%20%2B%20BARBA%20com%20Doom"
+            target="_blank">
+
+            Agendar no WhatsApp
+
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
 </section>
 
-<!-- LOCAL -->
+<!-- GALERIA -->
+
 <section class="section">
-  <h2>Localização</h2>
-  <p>Luziânia - GO</p>
+
+  <h2 class="section-title">Nossos Cortes</h2>
+
+  <div class="gallery">
+
+    <img src="WhatsApp Image 2026-05-08 at 13.19.00.jpeg">
+
+    <img src="WhatsApp Image 2026-05-08 at 13.19.000.jpeg">
+
+    <img src="WhatsApp Image 2026-05-08 at 13.19.006.jpeg">
+
+  </div>
+
 </section>
+
+<!-- LOCALIZAÇÃO -->
+
+<section class="section">
+
+  <h2 class="section-title">Localização</h2>
+
+  <div class="location-box">
+
+    <div class="location-text">
+
+      <h3>Goodfellas Barbearia</h3>
+
+      <p>
+        Luziânia - GO <br>
+        Atendimento premium com conforto e qualidade.
+      </p>
+
+    </div>
+
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3830.2995037594083!2d-47.9569682!3d-16.2564133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x935999e4c9211c9d%3A0x2538a3bfaa068ec7!2sBarbearia%20em%20Luziania%20Goodfellas!5e0!3m2!1spt-BR!2sbr!4v1778257507723!5m2!1spt-BR!2sbr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+  </div>
+
+</section>
+
+<!-- FOOTER -->
 
 <footer>
-  <p>© 2026 Goodfellas Barbearia</p>
+
+  <p>
+    © 2026 Goodfellas Barbearia — Todos os direitos reservados
+  </p>
+
 </footer>
+
+<!-- SCRIPT -->
+
+<script>
+
+const buttons = document.querySelectorAll(".open-services");
+
+buttons.forEach(button => {
+
+  button.addEventListener("click", () => {
+
+    const services =
+    button.nextElementSibling;
+
+    if(services.style.display === "block"){
+
+      services.style.display = "none";
+      button.innerText = "Ver Serviços";
+
+    }else{
+
+      services.style.display = "block";
+      button.innerText = "Fechar Serviços";
+
+    }
+
+  });
+
+});
+
+</script>
 
 </body>
 </html>
